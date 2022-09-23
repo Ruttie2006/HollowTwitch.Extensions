@@ -5,9 +5,15 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HollowTwitch.CustomKnight", "HollowTwitch.CustomKnight\HollowTwitch.CustomKnight.csproj", "{4BF6F7DC-4509-4148-86E7-2E1511C478F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HollowTwitch.Common", "HollowTwitch.Common\HollowTwitch.Common.csproj", "{9CD982ED-F454-47CF-BE59-CCCB8B4C036F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HollowTwitch.Common", "HollowTwitch.Common\HollowTwitch.Common.csproj", "{9CD982ED-F454-47CF-BE59-CCCB8B4C036F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HollowTwitch.BuiltIn", "HollowTwitch.BuiltIn\HollowTwitch.BuiltIn.csproj", "{C1848593-06C8-4FF0-A1CC-959A61E8158A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HollowTwitch.BuiltIn", "HollowTwitch.BuiltIn\HollowTwitch.BuiltIn.csproj", "{C1848593-06C8-4FF0-A1CC-959A61E8158A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20C47C8B-A527-49EB-9809-6EF7355B93B1}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
