@@ -6,7 +6,7 @@ namespace HollowTwitch.CustomKnight
 {
     public class HollowTwitchCK : ExtensionMod
     {
-        public static readonly Version Version = new(1, 0, 0, 0);
+        public static readonly Version Version = new(1, 1, 0, 0);
 
         public override string ExtensionName => "CustomKnight";
 

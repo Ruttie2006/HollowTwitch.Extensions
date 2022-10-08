@@ -9,7 +9,7 @@ namespace HollowTwitch.Randomizer
 {
     public class HollowTwitchRando : ExtensionMod
     {
-        public static readonly Version Version = new(1, 0, 0, 0);
+        public static readonly Version Version = new(1, 1, 0, 0);
 
         public override string ExtensionName => "Randomizer";
 

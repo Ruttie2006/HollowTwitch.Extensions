@@ -8,7 +8,7 @@ namespace HollowTwitch.BuiltIn
 {
     public class HollowTwitchBuiltIn : ExtensionMod
     {
-        public static readonly Version Version = new(1, 0, 0, 0);
+        public static readonly Version Version = new(1, 1, 0, 0);
 
         private static HollowTwitchBuiltIn instance;
         public static HollowTwitchBuiltIn Instance {
