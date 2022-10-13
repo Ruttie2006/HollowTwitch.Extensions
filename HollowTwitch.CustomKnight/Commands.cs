@@ -13,16 +13,18 @@ namespace HollowTwitch.CustomKnight
         [HKCommand("ck-skin")]
         [Summary("Shows the currently equipped Custom Knight skin.")]
         [Cooldown(0.5)]
+        [TwitchOnly]
         public void Skin()
         {
             var skin = SkinManager.GetCurrentSkin();
-            SendMessage($"The currently equipped skin is \'{skin.GetName()}\'");
+			Reply($"The currently equipped skin is \'{skin.GetName()}\'");
         }
 
         [HKCommand("ck-skins")]
         [Summary("Shows the currently installed Custom Knight skins.")]
         [Cooldown(0.5)]
-        public void Skins()
+		[TwitchOnly]
+		public void Skins()
         {
             var skins = SkinManager.GetInstalledSkins();
             var sb = new StringBuilder();
@@ -33,7 +35,7 @@ namespace HollowTwitch.CustomKnight
             res = res.TrimEnd(',', ' ');
             if (res.Length > 500)
                 res = res.Remove(500 - 5) + "+more";
-            SendMessage(res);
+            Reply(res);
         }
 
         [HKCommand("ck-wear")]
@@ -47,8 +49,6 @@ namespace HollowTwitch.CustomKnight
             var skin = skins.FirstOrDefault(x => x.GetName().ToLower() == name.ToLower());
             if (skin != null)
                 SkinManager.SetSkinById(skin.GetId());
-            else
-                SendMessage("The provided skin is not a valid/installed skin.");
         }
     }
 }

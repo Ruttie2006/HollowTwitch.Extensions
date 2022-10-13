@@ -20,6 +20,7 @@ namespace HollowTwitch.Common
         [HKCommand("mod")]
         [Summary("Shows whether a mod is enabled or not.")]
         [Cooldown(0.5)]
+        [TwitchOnly]
         public void Mod([RemainingText] string name)
         {
             var mods = ModHooks.GetAllMods(true, true);
@@ -29,19 +30,20 @@ namespace HollowTwitch.Common
                 if (mod is ITogglableMod togglable)
                 {
                     if (!ModHooks.ModEnabled(togglable))
-                        SendMessage("The mod is not enabled.");
+						Reply("The mod is not enabled.");
                     else
-                        SendMessage("The mod is enabled.");
+						Reply("The mod is enabled.");
                 }
             }
             else
-                SendMessage("The mod is not installed.");
+				Reply("The mod is not installed.");
         }
 
         [HKCommand("mods")]
         [Summary("Lists all loaded mods.")]
         [Cooldown(0.5)]
-        public void Mods()
+		[TwitchOnly]
+		public void Mods()
         {
             var sb = new StringBuilder();
             sb.Append("Currently installed mods:");
@@ -51,26 +53,28 @@ namespace HollowTwitch.Common
             res = res.TrimEnd(',', ' ');
             if (res.Length > 500)
                 res = res.Remove(500 - 5) + "+more";
-            SendMessage(res);
+			Reply(res);
         }
 
         [HKCommand("modversion")]
         [Summary("Gets the installed version of the specified mod.")]
         [Cooldown(0.5)]
-        public void ModVersion([RemainingText] string name)
+		[TwitchOnly]
+		public void ModVersion([RemainingText] string name)
         {
             var mods = ModHooks.GetAllMods(true, true);
             var mod = mods.FirstOrDefault(x => x.GetName().ToLower() == name.ToLower());
             if (mod == null)
-                SendMessage("The specifified mod is not installed.");
+				Reply("The specifified mod is not installed.");
             else
-                SendMessage($"The version is \'{mod.GetVersion()}\'.");
+				Reply($"The version is \'{mod.GetVersion()}\'.");
         }
 
         [HKCommand("charms")]
         [Summary("Gets ids of all equipped charms.")]
         [Cooldown(0.5)]
-        public void Charms()
+		[TwitchOnly]
+		public void Charms()
         {
             var equipped = PlayerData.instance.equippedCharms;
             var sb = new StringBuilder();
@@ -81,7 +85,7 @@ namespace HollowTwitch.Common
             res = res.TrimEnd(',', ' ');
             if (res.Length > 500)
                 res = res.Remove(500 - 5) + "+more";
-            SendMessage(res);
+            Reply(res);
         }
 
         private static string GetCharmName(int id)
@@ -135,7 +139,8 @@ namespace HollowTwitch.Common
         [HKCommand("bugreport")]
         [Summary("Creates a bug report.")]
         [Cooldown(5)]
-        [AdminOnly]
+		[TwitchOnly]
+		[AdminOnly]
         public void Modlog()
         {
             int failed = 0;
@@ -156,11 +161,11 @@ namespace HollowTwitch.Common
             catch { failed++; }
 
             if (failed == 0)
-                SendMessage("Successfully made bug log.");
+                Reply("Successfully made bug log.");
             else if (failed == 3)
-                SendMessage("Failed to create bug log.");
+				Reply("Failed to create bug log.");
             else
-                SendMessage("Some steps failed. Partial bug log was created.");
+				Reply("Some steps failed. Partial bug log was created.");
         }
     }
 }

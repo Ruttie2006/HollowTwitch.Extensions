@@ -13,10 +13,11 @@ namespace HollowTwitch.Commands
         [OwnerOnly]
         [HKCommand("echo")]
         [Summary("Echoes a message.")]
+        [TwitchOnly]
         public void Echo([RemainingText] string msg)
         {
             Logger.Log($"Sending message \'{msg}\'.");
-            SendMessage(msg);
+            Reply(msg);
         }
 
         [OwnerOnly]

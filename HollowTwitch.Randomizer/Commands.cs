@@ -15,14 +15,15 @@ namespace HollowTwitch.CustomKnight
         [HKCommand("rando-setting")]
         [Summary("Gets the value of a specific Randomizer setting.")]
         [Cooldown(0.5)]
+        [TwitchOnly]
         public void Setting([RemainingText] string setting)
         {
             if (!RandomizerMod.RandomizerMod.IsRandoSave || RandomizerMod.RandomizerMod.GS == null || RandomizerMod.RandomizerMod.GS.DefaultMenuSettings == null)
             {
-                SendMessage("The current save is not a randomizer save.");
+                Reply("The current save is not a randomizer save.");
                 return;
             }
-            SendMessage(RandomizerMod.RandomizerMod.GS.DefaultMenuSettings.Get(setting).ToString());
+			Reply(RandomizerMod.RandomizerMod.GS.DefaultMenuSettings.Get(setting).ToString());
         }
     }
 }
