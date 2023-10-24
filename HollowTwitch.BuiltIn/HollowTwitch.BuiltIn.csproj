@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../LocalBuildSettings.props"/>
+	<Import Project="../SharedBuildTargets.props"/>
+	
 	<PropertyGroup>
 		<RootNamespace>HollowTwitch.BuiltIn</RootNamespace>
 		<AssemblyName>HollowTwitch.BuiltIn</AssemblyName>
@@ -9,8 +12,8 @@
 		<Version>1.1.0.0</Version>
 		<LangVersion>latest</LangVersion>
 		<DebugType>portable</DebugType>
-		<HKDir>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</HKDir>
 	</PropertyGroup>
+	
 	<ItemGroup>
 	  <None Remove="shaders" />
 	</ItemGroup>
@@ -23,7 +26,7 @@
 			<HintPath>$(HKDir)\Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="HollowTwitch">
-			<HintPath>..\..\HKTwitch\HollowTwitch\bin\Debug\net472\HollowTwitch.dll</HintPath>
+			<HintPath>$(HKTwitchDir)\HollowTwitch.dll</HintPath>
 		</Reference>
 		<Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
 			<HintPath>$(HKDir)\MMHOOK_Assembly-CSharp.dll</HintPath>
@@ -62,27 +65,7 @@
 			<HintPath>$(HKDir)\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
 		</Reference>
 		<Reference Include="Vasi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-			<HintPath>$(HKDir)\Mods\Vasi\Vasi.dll</HintPath>
+			<HintPath>$(HKModsDir)\Vasi.dll</HintPath>
 		</Reference>
 	</ItemGroup>
-
-	<Target Name="CopyMod" AfterTargets="PostBuildEvent" Condition="false">
-		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb" DestinationFolder="$(HKDir)/Mods/$(TargetName)" SkipUnchangedFiles="true" />
-	</Target>
-
-	<Target Name="CreateReleaseZip" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
-		<MakeDir Directories="$(ProjectDir)Output" />
-		<Delete Files="$(ProjectDir)/$(TargetName).zip" />
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)/Output/" />
-		<Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(ProjectDir)/Output/" />
-		<Copy Condition="Exists('$(SolutionDir)/README.md')" SourceFiles="$(SolutionDir)/README.md" DestinationFolder="$(ProjectDir)/Output/" ContinueOnError="true" />
-		<MakeDir Directories="$(ProjectDir)/../Publishes" />
-		<ZipDirectory DestinationFile="$(ProjectDir)/../Publishes/$(TargetName).zip" SourceDirectory="$(ProjectDir)/Output" Overwrite="true"/>
-		<RemoveDir Directories="$(ProjectDir)Output" />
-
-		<GetFileHash Files="$(ProjectDir)/../Publishes/$(TargetName).zip" Algorithm="SHA256">
-			<Output TaskParameter="Items" ItemName="FilesWithHashes" />
-		</GetFileHash>
-		<Message Importance="High" Text="@(FilesWithHashes->'%(Identity): %(FileHash)')" />
-	</Target>
 </Project>

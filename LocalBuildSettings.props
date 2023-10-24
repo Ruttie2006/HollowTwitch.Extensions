@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+		<HKDir>../../../HKAPI</HKDir>
+		<HKTwitchDir>../../Output/HollowTwitch</HKTwitchDir>
+		<HKModsDir>../../../HKAPI/Mods</HKModsDir>
+	</PropertyGroup>
+</Project>

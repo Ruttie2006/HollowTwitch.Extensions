@@ -12,10 +12,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20C47C8B-A527-49EB-9809-6EF7355B93B1}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.txt = LICENSE.txt
+		LocalBuildSettings.props = LocalBuildSettings.props
 		README.md = README.md
+		SharedBuildTargets.props = SharedBuildTargets.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HollowTwitch.Randomizer", "HollowTwitch.Randomizer\HollowTwitch.Randomizer.csproj", "{B833B085-6AEA-41BB-A727-9C56E7F623CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HollowTwitch.Randomizer", "HollowTwitch.Randomizer\HollowTwitch.Randomizer.csproj", "{B833B085-6AEA-41BB-A727-9C56E7F623CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
